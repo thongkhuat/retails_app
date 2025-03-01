@@ -1,7 +1,7 @@
 # schemas/user.py
 """Pydantic schemas for User model."""
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, UUID4
 from typing import Optional
 
 class UserBase(BaseModel):
@@ -19,9 +19,12 @@ class UserUpdate(BaseModel):
     is_active: Optional[bool] = None
 
 class UserOut(UserBase):
-    id: str
+    id: UUID4  # Use UUID4 instead of str
     is_active: bool
     is_superuser: bool
 
     class Config:
-        from_attributes = True  # Updated from orm_mode
+        from_attributes = True
+        json_encoders = {
+            UUID4: lambda v: str(v)  # Convert UUID to string during serialization
+        }

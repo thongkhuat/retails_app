@@ -1,7 +1,7 @@
 # schemas/customer.py
 """Pydantic schemas for Customer model."""
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, UUID4
 from typing import Optional
 from datetime import datetime
 
@@ -23,9 +23,12 @@ class CustomerUpdate(BaseModel):
     address: Optional[str] = None
 
 class CustomerOut(CustomerBase):
-    id: str
-    last_purchase_order_id: Optional[str]
+    id: UUID4
+    last_purchase_order_id: Optional[UUID4]
     last_activity_time: datetime
 
     class Config:
-        from_attributes = True  # Updated from orm_mode
+        from_attributes = True
+        json_encoders = {
+            UUID4: lambda v: str(v)
+        }

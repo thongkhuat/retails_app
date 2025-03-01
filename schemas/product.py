@@ -1,7 +1,7 @@
 # schemas/product.py
 """Pydantic schemas for Product model."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, UUID4
 from typing import Optional
 from datetime import datetime
 
@@ -23,7 +23,10 @@ class ProductUpdate(BaseModel):
     remark: Optional[str] = None
 
 class ProductOut(ProductBase):
-    id: str
+    id: UUID4
 
     class Config:
-        from_attributes = True  # Updated from orm_mode
+        from_attributes = True
+        json_encoders = {
+            UUID4: lambda v: str(v)
+        }

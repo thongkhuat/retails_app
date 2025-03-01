@@ -1,12 +1,12 @@
 # schemas/order.py
 """Pydantic schemas for Order and OrderDetail models."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, UUID4
 from typing import Optional, List
 from datetime import datetime
 
 class OrderDetailBase(BaseModel):
-    product_id: str
+    product_id: UUID4
     qty: float = Field(..., ge=0)
     discount: Optional[float] = Field(None, ge=0)
     retail_price: Optional[float] = Field(None, ge=0)
@@ -16,22 +16,25 @@ class OrderDetailCreate(OrderDetailBase):
     pass
 
 class OrderDetailUpdate(BaseModel):
-    product_id: Optional[str] = None
+    product_id: Optional[UUID4] = None
     qty: Optional[float] = Field(None, ge=0)
     discount: Optional[float] = Field(None, ge=0)
     retail_price: Optional[float] = Field(None, ge=0)
     real_price: Optional[float] = Field(None, ge=0)
 
 class OrderDetailOut(OrderDetailBase):
-    id: str
-    order_id: str
+    id: UUID4
+    order_id: UUID4
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        json_encoders = {
+            UUID4: lambda v: str(v)
+        }
 
 class OrderBase(BaseModel):
     created_time: datetime
-    customer_id: str
+    customer_id: UUID4
     is_delivered: bool
     note: Optional[str] = None
     delivered_time: Optional[datetime] = None
@@ -43,7 +46,7 @@ class OrderCreate(OrderBase):
 
 class OrderUpdate(BaseModel):
     created_time: Optional[datetime] = None
-    customer_id: Optional[str] = None
+    customer_id: Optional[UUID4] = None
     is_delivered: Optional[bool] = None
     note: Optional[str] = None
     delivered_time: Optional[datetime] = None
@@ -52,8 +55,11 @@ class OrderUpdate(BaseModel):
     details: Optional[List[OrderDetailUpdate]] = None
 
 class OrderOut(OrderBase):
-    id: str
+    id: UUID4
     details: List[OrderDetailOut]
 
     class Config:
-        from_attributes = True  # Updated from orm_mode
+        from_attributes = True
+        json_encoders = {
+            UUID4: lambda v: str(v)
+        }
