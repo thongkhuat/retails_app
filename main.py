@@ -1,4 +1,6 @@
 """Main entry point for the FastAPI application."""
+import sys
+sys.dont_write_bytecode = True  # Prevent .pyc files
 
 import logging
 from fastapi import FastAPI, HTTPException, status, Depends
