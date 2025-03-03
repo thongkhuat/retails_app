@@ -29,7 +29,8 @@ CREATE TABLE customers (
     last_purchase_order_id UUID,
     last_activity_time TIMESTAMP DEFAULT NOW(),
     address VARCHAR,
-    email VARCHAR NOT NULL UNIQUE
+    email VARCHAR NOT NULL UNIQUE,
+    hashed_password VARCHAR(255) NOT NULL
 );
 
 -- Create Products table

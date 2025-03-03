@@ -1,0 +1,21 @@
+Dựa trên nhưng tài liệu tôi cung cấp về backend appService. Hãy giúp tôi xây dựng một frontend webApp với các yêu cầu sau:
+Technical requirements:
+-công nghệ:nextJS, node, tailwindcss, typescript
+-schema dữ liệu và backend api (file đính kèm)
+-hỗ trợ tầng bff để tăng tính bảo mật
+-tuân thủ phong cách viết SOLID và chuẩn coding style/comment nextJS - react best practise
+-hỗ trợ responsive cho fullscreen mode, điện thoại và tablet
+Business requirements:
+-Cung cấp tính năng sign up để guest có để tạo tài khoản (customer) trước khi bắt đầu mua hàng
+-Cung cấp trang login để 1 customer đã đăng ký có thể đăng nhập vào home page (email, password)
+-login validation hiện message màu đỏ bên dưới phần input
+-Sau khi đăng nhập thành công, customer được trỏ vào homepage nơi liệt kê danh sách tất cả mặt hàng có trong database (hiện theo danh sách card, tương tự shopee). Nếu database trống, hiện thông báo "No items to display!" chính giữa page
+-Trên mỗi card có thông tin sản phẩm (tham khảo các trang shoppe cách trình bày để có UI đẹp), kèm theo icon "add to cart"
+-Góc trên màn hình có 1 thanh mỏng chứa menu panel, góc phải có link "profile" và "logout"
+document requirements:
+Cung cấp cho tôi đầy đủ hướng dẫn chi tiết cài đặt (kể cả môi trường node.js)
+-Cây thư mục
+-Files và code đầy đủ
+-Hướng dẫn cài đặt
+-Các thư viện dependencies
+

@@ -13,7 +13,7 @@ class CustomerBase(BaseModel):
     address: Optional[str] = None
 
 class CustomerCreate(CustomerBase):
-    pass
+    password: str = Field(..., min_length=6)
 
 class CustomerUpdate(BaseModel):
     first_name: Optional[str] = Field(None, min_length=1)
@@ -21,6 +21,7 @@ class CustomerUpdate(BaseModel):
     email: Optional[EmailStr] = None
     dob: Optional[datetime] = None
     address: Optional[str] = None
+    password: Optional[str] = Field(None, min_length=6)
 
 class CustomerOut(CustomerBase):
     id: UUID4

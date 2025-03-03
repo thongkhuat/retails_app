@@ -30,6 +30,7 @@ class Customer(Base):
     last_activity_time = Column(DateTime, default=func.now())
     address = Column(String)
     email = Column(String, nullable=False, unique=True)
+    hashed_password = Column(String, nullable=False)
 
 class Product(Base):
     """Product model for items sold."""
