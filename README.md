@@ -99,7 +99,7 @@ Here’s the project structure:
 Follow these steps to deploy the app on your local machine
 * Run:
   `````bash
-  uvicorn main:app --reload
+  uvicorn main:app
   `````
 
 ## Intranet Deployment Guidelines
