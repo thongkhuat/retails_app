@@ -101,6 +101,10 @@ Follow these steps to deploy the app on your local machine
   `````bash
   uvicorn main:app
   `````
+* Test:
+  `````bash
+  http://127.0.0.1:8000/docs
+  `````
 
 ## Intranet Deployment Guidelines
 
