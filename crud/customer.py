@@ -21,6 +21,7 @@ def create_customer(db: Session, customer: CustomerCreate) -> Customer:
         raise HTTPException(status_code=400, detail={"errCode": 400, "errMsg": "Email already exists"})
     hashed_password = get_password_hash(customer.password)
     db_customer = Customer(**customer.dict(exclude={"password"}), hashed_password=hashed_password)
+    # Commit to db
     db.add(db_customer)
     db.commit()
     db.refresh(db_customer)
