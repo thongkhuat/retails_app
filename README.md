@@ -30,6 +30,11 @@ To isolate dependencies, set up a virtual environment:
   source venv/Scripts/activate
   `````
 
+### Run tests
+  `````bash
+  pytest --import-mode=importlib tests/product/test_scrum_122_create_product_invalid_retail_price.py
+  `````
+
 ### Install Required Packages
 
 Install dependencies listed in ````requirements.txt````:

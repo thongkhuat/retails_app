@@ -2,7 +2,7 @@ import requests
 import time
 
 # Helpers
-from helpers.auth_helper import get_jwt_token
+from ..helpers.auth_helper import get_jwt_token
 
 '''
   SCRUM-122 - Testcase: [POST] Create Product - Invalid Retail Price
@@ -20,7 +20,7 @@ def test_scrum_122_create_product_invalid_retail_price():
     jwt_token = get_jwt_token()
 
     # Endpoint and headers
-    url = "https://testdomain/product/"
+    url = "http://localhost:8000/product/"
     headers = {
         "Authorization": f"Bearer {jwt_token}",
         "Content-Type": "application/json"
