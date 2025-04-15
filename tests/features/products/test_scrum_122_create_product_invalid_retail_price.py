@@ -2,7 +2,7 @@ import requests
 import time
 
 # Helpers
-from ..helpers.auth_helper import get_jwt_token, BASE_URL
+from helpers.auth_helper import get_jwt_token, BASE_URL
 
 '''
   SCRUM-122 - Testcase: [POST] Create Product - Invalid Retail Price
