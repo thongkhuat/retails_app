@@ -2,7 +2,7 @@ import requests
 import time
 
 # Helpers
-from ..helpers.auth_helper import get_jwt_token
+from ..helpers.auth_helper import get_jwt_token, BASE_URL
 
 '''
   SCRUM-122 - Testcase: [POST] Create Product - Invalid Retail Price
@@ -20,9 +20,10 @@ def test_scrum_122_create_product_invalid_retail_price():
     jwt_token = get_jwt_token()
 
     # Endpoint and headers
-    url = "http://localhost:8000/product/"
+    url = f"{BASE_URL}/product/"
     headers = {
         "Authorization": f"Bearer {jwt_token}",
+        "Accept": "application/json",
         "Content-Type": "application/json"
     }
 
@@ -31,7 +32,8 @@ def test_scrum_122_create_product_invalid_retail_price():
         "name": "Smartphone",
         "type": "Electronics",
         "retail_price": -50,
-        "creation_date": "2023-10-01T00:00:00Z"
+        "creation_date": "2023-10-01T00:00:00Z",
+        "remark": "string"
     }
 
     # Step 1: Send API request with invalid "retail_price" value
