@@ -1,7 +1,7 @@
 # tests/helpers/auth_helper.py
 import requests
 
-def get_jwt_token():
+def get_jwt_token(username="admin", password="12345678"):
     """
     Helper function to get a JWT token for authorization.
     Returns:
@@ -9,8 +9,8 @@ def get_jwt_token():
     """
     auth_url = "http://localhost:8000/login"
     auth_payload = {
-        "username": "admin",
-        "password": "12345678"
+        "username": f"{username}",
+        "password": f"{password}"
     }
     headers = {
         "Content-Type": "application/json"
